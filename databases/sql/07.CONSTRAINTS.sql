@@ -4,7 +4,6 @@ show databases;
 DROP DATABASE IF EXISTS testdb;
 CREATE DATABASE IF NOT EXISTS testdb;
 
-
 -- unique constraint
 
 -- create table
@@ -60,7 +59,7 @@ INSERT INTO t4 (first_name) VALUES ('hasan');
 
 -- check the auto increment value
 SHOW VARIABLES LIKE 'auto_increment%';
-
+select * from t4;
 -- check constraints
 CREATE TABLE t5 (
     id INT AUTO_INCREMENT, 
@@ -86,7 +85,7 @@ CREATE TABLE t6 (
     first_name VARCHAR(20),
     CONSTRAINT id_unique UNIQUE (id)
     );
-
+table t6;
 -- another way to define primary key
 CREATE TABLE t6 (
     id INT AUTO_INCREMENT, 
@@ -118,7 +117,6 @@ VALUES  (1, 'Math'),
         (3, 'Science'),
         (3, 'Math');        
 TABLE t7;
-
 -- insert a row with non-existing id
 INSERT INTO t7 VALUES (4, 'Math'); -- error
 DROP TABLE t1;

@@ -2,7 +2,7 @@
 -- delete all rows from the t1
 USE testdb;
 DELETE FROM t1;
-
+select * from t1;
 DELETE * FROM t1;
 
 -- delete rows from t1 where id = 1

@@ -2,7 +2,7 @@
 -- b-tree by default    
 -- unique
 -- primary key
--- foreign key
+-- foreign key 
 
 -- column indexes
 --
@@ -38,6 +38,6 @@ SELECT * FROM t1 WHERE first_name = 'ahmed';
 
 EXPLAIN SELECT * FROM t1;
 EXPLAIN SELECT * FROM t1 WHERE id > 2;
-EXPLAIN SELECT * FROM t1 WHERE first_name like 'ahmed';
+EXPLAIN SELECT * FROM t1 WHERE first_name like 'ahmed' and id < 5;
 
 -- show on mysql workbench

@@ -1,4 +1,4 @@
--- Active: 1688236555284@@mysql-db@3306
+-- Active: 1728386201713@@mysql-db@3306@testdb
 -- ACID
 -- Atomicity
 -- Consistency
@@ -7,6 +7,8 @@
 
 
 show databases;
+
+DROP DATABASE IF EXISTS testdb;
 
 CREATE DATABASE IF NOT EXISTS testdb;
 
@@ -24,6 +26,7 @@ TABLE t1;
 -- update a row in t1
 UPDATE t1 SET first_name = 'ali' WHERE id = 1;
 
+TABLE t1;
 -- transactions
 -- autocommit
 -- start transaction
@@ -33,7 +36,7 @@ UPDATE t1 SET first_name = 'sawsan' WHERE id = 1;
 
 -- check the t1 rows from another session
 table t1;
--- commit transaction
+-- commit transaction  
 COMMIT; -- or ROLLBACK;
 
 TABLE t1;
@@ -42,6 +45,8 @@ TABLE t1;
 START TRANSACTION;
 -- update t1
 UPDATE t1 SET first_name = 'fekri' WHERE id = 1;
+
+TABLE t1;
 
 ROLLBACK;
 
@@ -52,6 +57,9 @@ TABLE t1;
 SET autocommit = 0;
 
 UPDATE t1 SET first_name = 'fekri' WHERE id = 1;
+
+TABLE t1;
+
 ROLLBACK;
 
 SET autocommit = 1;
@@ -62,7 +70,7 @@ UPDATE t1 SET first_name = 'fekri' WHERE id = 1;
 -- atomicity
 -- consistency
 -- isolation
--- durability
+-- durability 
 
 -- buffer pool, redo logs, flush to disk 
 /*

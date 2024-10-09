@@ -1,3 +1,4 @@
+-- Active: 1728386201713@@mysql-db@3306@sakila
 
 -- this is a comment 
 /* this is a multimline comment 
@@ -27,7 +28,7 @@ SELECT "'This is a quoted text'"; -- embed different qoutes
 
 -- another way is to use the backslash as an escape character
 SELECT "\'This is a quoted text\'";
-SELECT "This is a single quote \' and this is a doublequote \"";
+SELECT "This is a single quote \' and this is a doublequote \" ";
 SELECT "Line 1\nLine 2\nLine 3";
 SELECT "This is a path in windows C:\\my\\folder\\path";
 
@@ -118,7 +119,8 @@ SELECT @var11 = 11; -- null
 --  select from tables
 --
 SELECT actor_id FROM sakila.actor;
-SELECT count(actor_id) FROM sakila.actor;
+SELECT count(actor_id) FROM sakila.
+actor;
 SELECT DISTINCT actor_id FROM sakila.actor;
 SELECT actor_id, first_name FROM sakila.actor;
 USE sakila;
@@ -188,8 +190,8 @@ DEALLOCATE PREPARE sql_stmt;
 SELECT * FROM rental;
 SELECT customer_id, rental_id FROM rental;
 SELECT customer_id, count(rental_id) FROM rental GROUP BY customer_id;
-SELECT customer_id, count(rental_id) FROM rental GROUP BY customer_id ORDER BY customer_id DESC;
-SELECT customer_id, count(rental_id) FROM rental GROUP BY customer_id ORDER BY count(rental_id) DESC;
+SELECT customer_id, count(rental_id) FROM rental GROUP BY customer_id ORDER BY customer_id ;
+SELECT customer_id, count(rental_id) FROM rental GROUP BY customer_id ORDER BY count(rental_id) desc;
 
 SELECT customer_id, sum(amount) FROM payment GROUP BY customer_id ORDER BY sum(amount) DESC;
 
@@ -203,9 +205,9 @@ SELECT customer_id, sum(amount) FROM payment GROUP BY customer_id HAVING sum(amo
 SELECT category_id, name FROM category;
 SELECT film_id, category_id  FROM film_category;
 
-SELECT film_category.film_id, category.category_id, category.name FROM category
-INNER JOIN film_category
-ON film_category.category_id  = category.category_id;
+select film_category.film_id, category.category_id, category.name
+from category inner join film_category
+on film_category.category_id = category.category_id;
 
 SELECT fc.film_id, c.category_id, c.name FROM category AS c
 INNER JOIN film_category AS fc
@@ -237,6 +239,15 @@ ON fc.category_id  = c.category_id
 INNER JOIN film AS f
 ON f.film_id = fc.film_id;
 
+SELECT 
+-- fc.film_id,
+count(f.title) AS "Film Count", 
+c.name AS "Genre" 
+FROM category AS c INNER JOIN film_category AS fc
+USING(category_id)
+INNER JOIN film AS f
+USING(film_id)
+group by c.name;
 -- ---
 -- complete join example
 -- ---
@@ -260,7 +271,7 @@ select tbl1.*, tbl2.* from tbl1 cross join tbl2;
 
 -- views
 --
-CREATE VIEW vw_file_genre
+CREATE VIEW vw_file_genreo
 AS
 SELECT fc.film_id, f.title AS "Film Name", c.name AS "Genre" FROM category AS c
 INNER JOIN film_category AS fc

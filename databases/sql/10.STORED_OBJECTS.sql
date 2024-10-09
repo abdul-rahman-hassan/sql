@@ -15,8 +15,8 @@
 
 
 -- A function to calculate age
-CREATE FUNCTION fnAge(p_birth_date DATE)
-RETURNS INT
+CREATE FUNCTION fnAge(p_birth_date DATE) 
+RETURNS INT 
 DETERMINISTIC
 BEGIN
     DECLARE v_age INT;
@@ -24,7 +24,7 @@ BEGIN
     RETURN v_age;
 END;
 
-SELECT fnAge('1990-01-01');
+SELECT fnAge('2001-06-26');
 
 -- A function to calculate the area of a circle
 DELIMITER $$
